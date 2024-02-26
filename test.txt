@@ -1,0 +1,1 @@
+este é um arquivo teste que deverá estar na pasta public do usuario atual.

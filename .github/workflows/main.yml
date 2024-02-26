@@ -17,4 +17,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: './'
-          target: ${{ secrets.SSH_USER }} + "public_html"
+          target: /home/${{ secrets.SSH_USER }}/public_html
