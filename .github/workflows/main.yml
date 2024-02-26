@@ -8,8 +8,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Verificar se knockd está instalado
-        run: knockd --version || echo "knockd não está instalado"
+      # Adicione este passo para instalar o utilitário port knocking
+      - name: Install Port Knocking
+        run: sudo apt-get update && sudo apt-get install -y knockd
+      - name: ⚠️Verificando knockd...
+        run: knockd --version || echo "knockd não está instalado ⛔"
       - uses: actions/checkout@v2
       - name: Deploy to main
         uses: appleboy/scp-action@master
