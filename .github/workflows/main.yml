@@ -8,11 +8,13 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      # Adicione este passo para instalar o utilitário port knocking
+      # Instalando port knocking
       - name: Install Port Knocking
         run: sudo apt-get update && sudo apt-get install -y knockd
-      - name: ⚠️Verificando knockd...
-        run: knockd --version || echo "knockd não está instalado ⛔"
+      # Executando port knocking
+      - name: Port Knocking
+        run: knock -d 500 -v ${{ secrets.SSH_HOST }} ${{ secrets.SSH_PORT_1 }} ${{ secrets.SSH_PORT_2 }} ${{ secrets.SSH_PORT_3 }} ${{ secrets.SSH_PORT_4 }}
+
       - uses: actions/checkout@v2
       - name: Deploy to main
         uses: appleboy/scp-action@master
