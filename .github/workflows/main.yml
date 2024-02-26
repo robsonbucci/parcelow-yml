@@ -8,6 +8,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Verificar se knockd está instalado
+        run: knockd --version || echo "knockd não está instalado"
       - uses: actions/checkout@v2
       - name: Deploy to main
         uses: appleboy/scp-action@master
